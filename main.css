@@ -1,0 +1,64 @@
+/* Estilos del Menú de Navegación */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    background: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+nav a {
+    display: inline-block;
+    font-size: 1em;
+    font-weight: 500;
+    color: white;
+    text-decoration: none;
+    padding: 0 23px;
+}
+
+nav span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95px;
+    height: 100%;
+    background: linear-gradient(45deg, #194b4f, #33fffc);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+nav a:nth-child(1):hover ~ span {
+    left: 0px;
+}
+
+nav a:nth-child(2):hover ~ span {
+    left: 90px;
+}
+
+nav a:nth-child(3):hover ~ span {
+    left: 180px;
+}
+
+nav a:nth-child(4):hover ~ span {
+    left: 275px;
+}
+
+nav a:nth-child(5):hover ~ span {
+    left: 380px;
+}
+
+/* Estilos de las secciones */
+section {
+    padding: 100px 20px;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin-top: 60px;
+}
+
+section:nth-child(even) {
+    background-color: #ddd;
+}

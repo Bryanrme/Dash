@@ -9,20 +9,35 @@
 <body>
     <div class="background">
         <video autoplay muted loop class="video">
-            <source src="2.mp4" type="video/mp4" class="v"></source>
+            <source src="2.mp4" type="video/mp4">
         </video>
         <div class="login">
             <div class="login-form">
-                <h1>LOGIN Bryan</h1>
-                <form>
-                <input type="text"
-                placeholder="Username"><br><br>
-                <input type="Password" 
-                placeholder="Password"> <br><br><br>
-                <button>Login</button>
+                <h1>Login</h1>
+                <form onsubmit="return login()">
+                    <input type="text" id="username" placeholder="Username" required><br><br>
+                    <input type="password" id="password" placeholder="Password" required><br><br><br>
+                    <button type="submit">Login</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script>
+        function login() {
+            // Aquí puedes implementar lógica de autenticación
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Verificación simple (puedes usar datos estáticos por ahora)
+            if (username === 'user' && password === 'pass') {
+                window.location.href = 'examen.html'; // Redirige a la página 
+                return false; // Evita que el formulario se envíe
+            } else {
+                alert('Credenciales incorrectas');
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Avanzado ASP.NET - Controles de Validación</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #333; }
+        .question { margin: 20px 0; }
+        .result { font-weight: bold; color: #007b00; }
+    </style>
+</head>
+<body>
+
+    <h1>Examen Avanzado de ASP.NET - Controles de Validación</h1>
+    <form id="quizForm">
+
+        <!-- Pregunta 1 -->
+        <div class="question">
+            <h2>1. ¿Cuál de las siguientes expresiones regulares es correcta para un <code>RegularExpressionValidator</code> que valida una dirección de correo electrónico?</h2>
+            <input type="radio" name="q1" value="a"> a) ^\d{3}-\d{2}-\d{4}$ <br>
+            <input type="radio" name="q1" value="b"> b) ^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$ <br>
+            <input type="radio" name="q1" value="c"> c) ^[A-Za-z]+$ <br>
+            <input type="radio" name="q1" value="d"> d) ^[\d-\.]{5,10}$ <br>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="question">
+            <h2>2. Verdadero o Falso: El <code>CompareValidator</code> solo puede validar si dos campos tienen el mismo valor.</h2>
+            <input type="radio" name="q2" value="true"> Verdadero<br>
+            <input type="radio" name="q2" value="false"> Falso<br>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="question">
+            <h2>3. ¿Cuál de los siguientes controles permite establecer un rango de fechas para validar con <code>RangeValidator</code>?</h2>
+            <input type="radio" name="q3" value="a"> a) <code>RangeValidator.Type="Double"</code> <br>
+            <input type="radio" name="q3" value="b"> b) <code>RangeValidator.Type="Date"</code> <br>
+            <input type="radio" name="q3" value="c"> c) <code>RangeValidator.Type="String"</code> <br>
+            <input type="radio" name="q3" value="d"> d) Ninguna de las anteriores <br>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="question">
+            <h2>4. ¿Cuál es el propósito del control <code>CustomValidator</code> en ASP.NET?</h2>
+            <input type="radio" name="q4" value="a"> a) Validar entradas personalizadas con una función de cliente o servidor <br>
+            <input type="radio" name="q4" value="b"> b) Validar direcciones de correo electrónico automáticamente <br>
+            <input type="radio" name="q4" value="c"> c) Asegurar que un campo no esté vacío <br>
+            <input type="radio" name="q4" value="d"> d) Validar campos contra valores predeterminados <br>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="question">
+            <h2>5. ¿Cuáles de las siguientes afirmaciones sobre <code>RequiredFieldValidator</code> son correctas? (Selecciona todas las que apliquen)</h2>
+            <input type="checkbox" name="q5" value="a"> a) Se utiliza para asegurarse de que el usuario ha completado el campo <br>
+            <input type="checkbox" name="q5" value="b"> b) Solo puede aplicarse a campos de tipo texto <br>
+            <input type="checkbox" name="q5" value="c"> c) No permite valores nulos o vacíos en el campo de destino <br>
+            <input type="checkbox" name="q5" value="d"> d) Puede combinarse con otros controles de validación en un mismo campo <br>
+        </div>
+
+        <!-- Pregunta 6 -->
+        <div class="question">
+            <h2>6. ¿Qué ocurre cuando se utiliza <code>Response.Redirect</code> en una página con un formulario no enviado?</h2>
+            <input type="radio" name="q6" value="a"> a) ASP.NET muestra una advertencia <br>
+            <input type="radio" name="q6" value="b"> b) Los datos del formulario se envían a la página de destino <br>
+            <input type="radio" name="q6" value="c"> c) La página se redirige sin enviar datos del formulario <br>
+            <input type="radio" name="q6" value="d"> d) La redirección falla y se muestra un error <br>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="question">
+            <h2>7. Verdadero o Falso: Los controles de validación de ASP.NET se ejecutan tanto en el cliente como en el servidor.</h2>
+            <input type="radio" name="q7" value="true"> Verdadero<br>
+            <input type="radio" name="q7" value="false"> Falso<br>
+        </div>
+
+        <!-- Pregunta 8 -->
+        <div class="question">
+            <h2>8. ¿Qué tipo de dato puedes validar con el atributo <code>Type</code> del <code>RangeValidator</code>? (Selecciona todas las que apliquen)</h2>
+            <input type="checkbox" name="q8" value="a"> a) Integer <br>
+            <input type="checkbox" name="q8" value="b"> b) Double <br>
+            <input type="checkbox" name="q8" value="c"> c) Date <br>
+            <input type="checkbox" name="q8" value="d"> d) Boolean <br>
+        </div>
+
+        <button type="button" onclick="checkAnswers()">Enviar Examen</button>
+    </form>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        function checkAnswers() {
+            const answers = {
+                q1: 'b',
+                q2: 'false',
+                q3: 'b',
+                q4: 'a',
+                q5: ['a', 'c', 'd'],
+                q6: 'c',
+                q7: 'true',
+                q8: ['a', 'b', 'c']
+            };
+            
+            let score = 0;
+            const totalQuestions = Object.keys(answers).length;
+
+            // Evaluar respuestas
+            for (let question in answers) {
+                const userAnswers = Array.from(document.querySelectorAll(`input[name="${question}"]:checked`)).map(el => el.value);
+                const correctAnswers = Array.isArray(answers[question]) ? answers[question] : [answers[question]];
+
+                if (userAnswers.length === correctAnswers.length && userAnswers.every((val, idx) => val === correctAnswers[idx])) {
+                    score++;
+                }
+            }
+
+            // Mostrar resultado
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `Obtuviste ${score} de ${totalQuestions} respuestas correctas.`;
+            resultDiv.style.color = score === totalQuestions ? "green" : "red";
+        }
+    </script>
+
+</body>
+</html>
