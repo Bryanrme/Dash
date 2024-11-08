@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Examen Avanzado ASP.NET - Controles de Validación</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
-        h2 { color: #333; }
+        h2 { color: #ffffff; }
         .question { margin: 20px 0; }
         .result { font-weight: bold; color: #007b00; }
     </style>
@@ -23,6 +24,7 @@
             <input type="radio" name="q1" value="b"> b) ^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$ <br>
             <input type="radio" name="q1" value="c"> c) ^[A-Za-z]+$ <br>
             <input type="radio" name="q1" value="d"> d) ^[\d-\.]{5,10}$ <br>
+        
         </div>
 
         <!-- Pregunta 2 -->
@@ -84,7 +86,14 @@
             <input type="checkbox" name="q8" value="d"> d) Boolean <br>
         </div>
 
-        <button type="button" onclick="checkAnswers()">Enviar Examen</button>
+        
+        <button class="btn-class-name" type="button" onclick="checkAnswers()">
+            <span>Enviar formulario</span>
+            <svg viewBox="0 0 320 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+            <path d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z">
+            </path>
+            </svg>
+        </button>
     </form>
 
     <div id="result" class="result"></div>
